@@ -122,15 +122,14 @@ app.use((req, res, next) => {
                 let query = "SELECT * FROM `token` WHERE `login_code` ='"+decode[0]+"' LIMIT 1";
                 db.query(query, (err, result) => { 
                     if(err){
-                        req.session.destroy();
+                        req.session.username = undefined;;
                         next();
                     }else{
                         if(result.length !==0){
                             req.session.username = result[0]['username'];
-                            console.log(req.session.username);
                             next();
                         }else{
-                            req.session.destroy();
+                            req.session.username = undefined;
                             next();
                         }
                     }

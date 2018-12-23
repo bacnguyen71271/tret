@@ -92,13 +92,20 @@ module.exports = {
         
                             //Add Token Login
                             let query = "INSERT INTO `token`( `login_code`, `username`, `brower_info`, `ip`, `login_at`) VALUES ('" + login_code + "','" + result[0]["userid"] + "','" + JSON.stringify(req.useragent) + "','" + ip + "','" + Date.now() + "')";
-                            db.query(query, (err, result) => { });
+                            console.log(query);
+                            db.query(query, (err, result) => { 
+                                if(err){
+                                    console.log(err)
+                                }else{
+                                    var token = jwt.sign(data, 'tretsecret123123adsdsd_super', {});
+                                    req.session.token = token;
+                                    
+                                    res.redirect('/');
+                                    console.log('Login Success');
+                                }
+                            });
         
-                            var token = jwt.sign(data, 'tretsecret123123adsdsd_super', {});
-                            req.session.token = token;
                             
-                            res.redirect('/');
-                            console.log('Login Success');
                         }
                         //return res.render('pageLogin.ejs', { mess: res.__('login_mess_5') });
                     }else{
