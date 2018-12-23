@@ -127,6 +127,7 @@ app.use((req, res, next) => {
                     }else{
                         if(result.length !==0){
                             req.session.username = result[0]['username'];
+                            console.log(req.session.username);
                             next();
                         }else{
                             req.session.destroy();
