@@ -1,6 +1,6 @@
-var apihost = "http://api.dev.io:2000";
-var apiupload = "http://upload.dev.io:2000";
-var socket = io("http://dev.io:2000");
+var apihost = "http://api.touristreivew.io";
+var apiupload = "http://upload.touristreivew.io";
+var socket = io("http://mvp.touristreivew.io");
 
 var avatarInput = $("#avatar-input");
 var coverInput = $("#cover-input");
