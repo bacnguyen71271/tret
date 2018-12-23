@@ -4,7 +4,7 @@ var http = require('http')
 var serveStatic = require('serve-static')
 
 // Serve up public folder
-var serve = serveStatic('static')
+var serve = serveStatic('/');
 
 // Create server
 var server = http.createServer(function(req, res){
