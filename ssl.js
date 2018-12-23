@@ -1,10 +1,16 @@
-const express = require('express');
+// This is the example from the README
+var finalhandler = require('finalhandler')
+var http = require('http')
+var serveStatic = require('serve-static')
 
-// Configure & Run the http server
-const app = express();
+// Serve up public folder
+var serve = serveStatic('static')
 
-app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ))
-   
-app.listen(2000, () => {
-  console.log('HTTP server running on port 80');
-});
+// Create server
+var server = http.createServer(function(req, res){
+  var done = finalhandler(req, res)
+  serve(req, res, done)
+})
+
+// Listen
+server.listen(2000)

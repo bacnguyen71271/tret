@@ -20,6 +20,7 @@
     "express-session": "^1.15.6",
     "express-subdomain": "^1.0.5",
     "express-useragent": "^1.0.12",
+    "finalhandler": "^1.1.1",
     "hex-to-dec": "^1.0.1",
     "i18n": "^0.8.3",
     "jsonwebtoken": "^8.4.0",
@@ -33,6 +34,7 @@
     "req-flash": "0.0.3",
     "request": "^2.88.0",
     "serve-index": "^1.9.1",
+    "serve-static": "^1.13.2",
     "socket.io": "^2.2.0",
     "speakeasy": "^2.0.0"
   }
