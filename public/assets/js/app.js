@@ -1,6 +1,6 @@
-var apihost = "http://api.touristreivew.io";
-var apiupload = "http://upload.touristreivew.io";
-var socket = io("http://mvp.touristreivew.io");
+var apihost = "http://api.touristreview.io";
+var apiupload = "http://upload.touristreview.io";
+var socket = io("http://mvp.touristreview.io");
 
 var avatarInput = $("#avatar-input");
 var coverInput = $("#cover-input");
