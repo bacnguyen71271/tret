@@ -6,7 +6,7 @@ const hexToDec = require('hex-to-dec');
 var options = {
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'tret123',
     database: 'tret',
     expiration: 1000*60*60*24*30*12
 };

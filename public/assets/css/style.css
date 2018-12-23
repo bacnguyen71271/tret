@@ -2831,7 +2831,24 @@ ul.contact li i{
   CSS for width 992px
   ==================================================*/
 
+@media only screen and (min-width : 992px){
+  a.collapsed { 
+    display: none !important;
+  }
+  
+}
+form#login_form input {
+  min-width: 220px !important;
+}
+
 @media only screen and (max-width : 992px) {
+  .navbar-header {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width : 992px) {
+  
 
   section h1.section-title{font-size: 175px; margin-bottom: -40px;}
   
