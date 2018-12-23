@@ -4,7 +4,7 @@ var nodemailer =  require('nodemailer');
 
 var transporter =  nodemailer.createTransport({ // config mail server
     host: 'server247.web-hosting.com',
-    port: 25,
+    port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
         user: 'no-reply@touristreview.io',
