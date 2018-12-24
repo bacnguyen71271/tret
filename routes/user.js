@@ -92,10 +92,10 @@ module.exports = {
         
                             //Add Token Login
                             let query = "INSERT INTO `token`( `login_code`, `username`, `brower_info`, `ip`, `login_at`) VALUES ('" + login_code + "','" + result[0]["userid"] + "','" + JSON.stringify(req.useragent) + "','" + ip + "','" + Date.now() + "')";
-                            console.log(query);
                             db.query(query, (err, result) => { 
                                 if(err){
-                                    console.log(err)
+                                    console.log(err);
+                                    res.redirect('/');
                                 }else{
                                     var token = jwt.sign(data, 'tretsecret123123adsdsd_super', {});
                                     req.session.token = token;

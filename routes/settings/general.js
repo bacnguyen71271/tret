@@ -91,7 +91,7 @@ module.exports = {
                                                let seting = "SELECT * FROM `options` LIMIT 1";
                                                db.query(seting,(err,st)=>{
                                                    if(!err){
-                                                    bday= new Date(result[0]["birthday"]);
+                                                    bday= new Date(result[0]["birthday"]*1);
                                                     var bday_text = "";
                                                     bday_text+=bday.getFullYear()+"-";
                                                     bday_text+=bday.getMonth()<10? "0"+bday.getMonth():bday.getMonth();
@@ -168,7 +168,7 @@ module.exports = {
                 if(!err){
                  if(rs_qe.length > 0){
                      if(rs_qe[0]["userid"] == req.session.username){
-                        let query = "UPDATE `user` SET `username`='"+displayname+"',`firstname`='"+req.body.firstname+"',`lastname`='"+req.body.lastname+"',`sex`='"+req.body.sex+"',`birthday`='"+req.body.bday+"',`country`='"+req.body.country+"',`address`='"+req.body.address+"',`updated_at`='"+Date.now()+"' WHERE `userid` = '"+req.session.username+"'";
+                        let query = "UPDATE `user` SET `username`='"+displayname+"',`firstname`='"+req.body.firstname+"',`lastname`='"+req.body.lastname+"',`sex`='"+req.body.sex+"',`birthday`='"+new Date(req.body.bday).getTime()+"',`country`='"+req.body.country+"',`language` = '"+req.body.language+"',`address`='"+req.body.address+"',`updated_at`='"+Date.now()+"' WHERE `userid` = '"+req.session.username+"'";
                         
                         db.query(query,(err,resu)=>{
                             if(!err){

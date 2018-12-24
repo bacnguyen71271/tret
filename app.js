@@ -86,6 +86,7 @@ i18n.configure({
     locales: ['en', 'vi'],
     directory: __dirname + '/locales',
     cookie: 'lang',
+    defaultLocale: 'en',
 });
 app.use(i18n.init);
 
@@ -126,8 +127,17 @@ app.use((req, res, next) => {
                         next();
                     }else{
                         if(result.length !==0){
-                            req.session.username = result[0]['username'];
-                            next();
+                            let query = "SELECT * FROM `user` WHERE `userid` ='"+result[0]['username']+"' LIMIT 1";
+                            db.query(query,(err,ress)=>{
+                                if(!err){
+                                    req.session.username = result[0]['username'];
+                                    res.cookie('lang', ress[0]['language'], { maxAge: 900000 });
+                                    next();
+                                }else{
+                                    req.session.username = result[0]['username'];
+                                    next();
+                                }
+                            })
                         }else{
                             req.session.username = undefined;
                             next();
@@ -142,10 +152,6 @@ app.use((req, res, next) => {
 uploadAvatar(routerUPLOAD);
 uploadCover(routerUPLOAD);
 
-app.use(function (req, res, next) {
-    res.cookie('lang', 'vi', { maxAge: 900000 });
-    next();
-});
 
 routerAPI.post('/login', login);
 routerAPI.post('/register', register);

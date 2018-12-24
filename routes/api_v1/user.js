@@ -59,7 +59,7 @@ module.exports = {
                 }else{
                     var tokenVeri = jwt.sign({a:'verify',e:req.body.email,d: Date.now()},'tretsecretemail', {});
                     let query = "INSERT INTO `user`(`email`,`password`, `firstname`, `lastname`, `sex`, `birthday`, `country`, `address`, `created_at`, `updated_at`)";
-                    query += "VALUES ('"+req.body.email.toLowerCase()+"','"+ md5(req.body.password)+"','"+jsUcfirst(req.body.firstname)+"','"+jsUcfirst(req.body.lastname)+"','"+req.body.sex+"','"+req.body.year+"-"+req.body.month+"-"+req.body.day+"','"+req.body.country+"','"+req.body.city+"','"+Date.now()+"','"+Date.now()+"')";
+                    query += "VALUES ('"+req.body.email.toLowerCase()+"','"+ md5(req.body.password)+"','"+jsUcfirst(req.body.firstname)+"','"+jsUcfirst(req.body.lastname)+"','"+req.body.sex+"','"+new Date(req.body.month + "/" + req.body.day + "/" + req.body.year).getTime()+"','"+req.body.country+"','"+req.body.city+"','"+Date.now()+"','"+Date.now()+"')";
                     db.query(query,(err,result)=>{
                         if(err){return res.send({ success: false, message: err, data: null });}
                         else{
